@@ -1,6 +1,6 @@
 # API de Consulta ao Acervo de uma Biblioteca
 
-API desenvolvida em Python utilizando FastAPI para consulta ao acervo de uma biblioteca.
+API desenvolvida em **Python** utilizando **FastAPI** para consulta ao acervo de uma biblioteca.
 
 A aplicação permite consultar todos os livros cadastrados ou buscar um livro específico pelo seu identificador.
 
@@ -13,7 +13,7 @@ A aplicação permite consultar todos os livros cadastrados ou buscar um livro e
 
 ## Estrutura do projeto
 
-
+```text
 atividade_biblioteca/
 │
 ├── README.md
@@ -21,55 +21,58 @@ atividade_biblioteca/
 ├── livro_repositorio.py
 ├── servico_livros.py
 └── livros.py
-
+```
 
 ### Descrição dos arquivos
 
-- modelos.py: contém o modelo `Livro` e as validações dos dados.
-- livro_repositorio.p: armazena os livros em memória e realiza o acesso à coleção.
-- servico_livros.py: contém as regras de negócio e a exceção para livro não encontrado.
-- livros.py: contém as rotas da API e o tratamento das requisições HTTP.
+- **modelos.py**: contém o modelo `Livro` e as validações dos dados.
+- **livro_repositorio.py**: armazena os livros em memória e realiza o acesso à coleção.
+- **servico_livros.py**: contém as regras de negócio e a exceção para livro não encontrado.
+- **livros.py**: contém as rotas da API e o tratamento das requisições HTTP.
 
 ## Requisitos
 
-É necessário ter o Python instalado no computador.
+É necessário ter o **Python** instalado no computador.
 
 Para verificar a instalação:
-python --version
 
+```bash
+python --version
+```
 
 ## Instalação
 
 Abra o terminal na pasta do projeto e crie um ambiente virtual:
 
+```bash
 python -m venv .venv
-
+```
 
 Ative o ambiente virtual no Windows:
 
-
+```powershell
 .venv\Scripts\activate
-
+```
 
 Depois, instale as dependências:
 
-
+```bash
 pip install fastapi uvicorn
-
+```
 
 ## Executando a aplicação
 
 Com o ambiente virtual ativado, execute:
 
-
+```bash
 uvicorn livros:app --reload
-
+```
 
 A API ficará disponível em:
 
-
+```text
 http://127.0.0.1:8000
-
+```
 
 ## Documentação Swagger
 
@@ -77,9 +80,9 @@ O FastAPI disponibiliza uma documentação interativa automaticamente.
 
 Acesse no navegador:
 
-
+```text
 http://127.0.0.1:8000/docs
-
+```
 
 Nessa página é possível visualizar e testar as rotas da API.
 
@@ -87,15 +90,15 @@ Nessa página é possível visualizar e testar as rotas da API.
 
 ### Listar todos os livros
 
-
+```http
 GET /livros
-
+```
 
 Retorna a lista de livros cadastrados.
 
 Exemplo:
 
-
+```json
 [
   {
     "id": 1,
@@ -105,27 +108,27 @@ Exemplo:
     "disponivel": true
   }
 ]
-
+```
 
 ### Buscar livro por identificador
 
-
+```http
 GET /livros/{livro_id}
-
+```
 
 Exemplo:
 
-
+```text
 GET /livros/1
-
+```
 
 Retorna o livro correspondente ao identificador informado.
 
 ## Códigos de resposta
 
-- 200 OK: livro encontrado ou lista de livros retornada com sucesso.
-- 404 Not Found: identificador válido, mas não existe livro correspondente.
-- 422 Unprocessable Entity: identificador inválido, como zero, número negativo ou texto.
+- **200 OK**: livro encontrado ou lista de livros retornada com sucesso.
+- **404 Not Found**: identificador válido, mas não existe livro correspondente.
+- **422 Unprocessable Entity**: identificador inválido, como zero, número negativo ou texto.
 
 ## Validações
 
@@ -147,5 +150,6 @@ Como os dados são armazenados em memória, eles são reiniciados quando a aplic
 
 Para encerrar a aplicação, pressione:
 
-
+```text
 CTRL + C
+```
